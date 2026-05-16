@@ -4,10 +4,11 @@ import type { Movie } from '../types/movie';
 interface MovieGridProps {
   movies: Movie[];
   onDelete: (id: string) => void;
+  onEdit: (movie: Movie) => void;
   isLoading: boolean;
 }
 
-export function MovieGrid({ movies, onDelete, isLoading }: MovieGridProps) {
+export function MovieGrid({ movies, onDelete, onEdit, isLoading }: MovieGridProps) {
   if (isLoading) {
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -33,6 +34,7 @@ export function MovieGrid({ movies, onDelete, isLoading }: MovieGridProps) {
           key={movie.id}
           movie={movie}
           onDelete={onDelete}
+          onEdit={onEdit}
         />
       ))}
     </div>
